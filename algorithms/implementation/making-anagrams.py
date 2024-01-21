@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-def count_disjunct_letters_to_remove(letter_frequency_first, letter_frequency_second):
+def _count_disjunct_letters_to_remove(letter_frequency_first, letter_frequency_second):
     first_letters = set(letter_frequency_first.keys())
     second_letters = set(letter_frequency_second.keys())
     disjunct_letters = first_letters.symmetric_difference(second_letters)
@@ -16,7 +16,7 @@ def count_disjunct_letters_to_remove(letter_frequency_first, letter_frequency_se
     return remove_counter
 
 
-def count_common_letters_to_remove(letter_frequency_first, letter_frequency_second):
+def _count_common_letters_to_remove(letter_frequency_first, letter_frequency_second):
     first_letters = set(letter_frequency_first.keys())
     second_letters = set(letter_frequency_second.keys())
     common_letters = first_letters.intersection(second_letters)
@@ -34,8 +34,10 @@ def making_anagrams(s1, s2):
     letter_frequency_first = Counter(s1)
     letter_frequency_second = Counter(s2)
 
-    return count_disjunct_letters_to_remove(letter_frequency_first, letter_frequency_second) + \
-        count_common_letters_to_remove(letter_frequency_first, letter_frequency_second)
+    disjoint_count = _count_disjunct_letters_to_remove(letter_frequency_first, letter_frequency_second)
+    common_count = _count_common_letters_to_remove(letter_frequency_first, letter_frequency_second)
+
+    return disjoint_count + common_count
 
 
 print(making_anagrams(
