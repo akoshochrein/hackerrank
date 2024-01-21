@@ -7,7 +7,6 @@ def compare_string_numbers(a, b):
     elif len(b) > len(a):
         return -1
     else:
-        # here we need to check from the start of the string and determine which number is bigger
         for i in range(len(a)):
             num_a = int(a[i])
             num_b = int(b[i])
