@@ -13,4 +13,17 @@ def mark_and_toys(budget: int, prices: list[int]) -> int:
     return number_of_toys
 
 
-print(mark_and_toys(50, [1, 12, 5, 111, 200, 1000, 10]))
+def mark_and_toys_expensive(budget: int, prices: list[int]) -> int:
+    sorted_prices = sorted(prices, reverse=True)
+
+    purchased_toy_prices = []
+    wallet = budget
+    for price in sorted_prices:
+        if wallet - price >= 0:
+            wallet -= price
+            purchased_toy_prices.append(price)
+
+    return len(purchased_toy_prices)
+
+
+print(mark_and_toys_expensive(50, [1, 12, 5, 40, 111, 200, 1000, 10]))
