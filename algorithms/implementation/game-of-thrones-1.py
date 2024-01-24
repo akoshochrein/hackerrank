@@ -1,8 +1,8 @@
 from collections import Counter
 
 
-def game_of_thrones_one(word: str) -> str:
-    letter_frequencies = Counter(word)
+def game_of_thrones_one(key: str) -> str:
+    letter_frequencies = Counter(key)
 
     odd_letters = 0
     for letter in letter_frequencies.keys():
